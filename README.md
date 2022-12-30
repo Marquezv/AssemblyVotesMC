@@ -1,4 +1,4 @@
-# Assembly Votes(MicroServices)🚧 - IN DEVELOPED
+# Assembly Votes(MicroServices)🚧 - In development
 
 ## API to creating voting session
 
