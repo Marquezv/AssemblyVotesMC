@@ -25,10 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 public class SessionService {
-	
 
-	private final SurveyService surveyService;
-	
 	private final AllowedUserSessionService allowedUserSessionService;
 	
 	private final CheckService checkService;
@@ -94,7 +91,6 @@ public class SessionService {
 	}
 	
 	public List<SessionResponseDTO> findAllSurvey(Long survey_id){
-		surveyService.findById(survey_id);
 		return findAll().stream()
 				.filter(session -> session.getSurvey_id().equals(survey_id))
 				.toList();		
@@ -106,7 +102,6 @@ public class SessionService {
 						() -> new ObjectNotFoundException("SESSION_ID - NOT_FOUND")).toResponse();
 		res.setAllowedUserSession(allowedUserSessionService.findAllUserSession(id));
 //		res.setUserResponse(userService.findById(res.getUser_id()).toResponse());
-		res.setSurveyResponse(surveyService.findById(res.getSurvey_id()).toResponse());
 		
 		return res;
 	}

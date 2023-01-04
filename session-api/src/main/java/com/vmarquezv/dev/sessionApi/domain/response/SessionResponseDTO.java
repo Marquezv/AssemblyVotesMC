@@ -33,8 +33,6 @@ public class SessionResponseDTO extends RepresentationModel<SessionResponseDTO>{
 	@JsonIgnore
 	private Long survey_id;
 	
-	private SurveyResponseDTO surveyResponse;
-	
 	private String survey_description;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")

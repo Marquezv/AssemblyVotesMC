@@ -14,7 +14,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,13 +36,11 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
 	@JoinColumn(name = "SURVEY_ID")
-    private Survey survey;
+    private Long survey_id;
 	
-	@OneToOne
 	@JoinColumn(name = "USER_ID")
-	private User user;
+	private Long user_id;
 	
 	@Column(name = "STARTED_ON")
 	private LocalDateTime started_on;
@@ -75,9 +72,8 @@ public class Session {
 	public SessionResponseDTO toResponse() {
 		SessionResponseDTO surveyRes = new SessionResponseDTO()
 				.setSession_id(this.id)
-				.setUser_id(this.user.getId())
-				.setSurvey_id(this.survey.getId())
-				.setSurvey_description(this.survey.getDescription())
+				.setUser_id(this.user_id)
+				.setSurvey_id(this.survey_id)
 				.setStarted_on(this.started_on)
 				.setClosed_on(this.closed_on)
 				.setCreated_on(this.created_on)

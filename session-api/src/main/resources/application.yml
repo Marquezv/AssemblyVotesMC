@@ -8,9 +8,14 @@ spring:
        
    datasource:
        driver-class-name: org.postgresql.Driver
-       url: jdbc:postgresql://localhost:5432/user
-       username: user
-       password: pass
+       url: jdbc:postgresql://localhost:5432/assembly-db
+       username: adm
+       password: 123
+       initialization-mode: always
+       initialize: true
+       continue-on-error: true
+       platform: postgresql
+
   # JPA properties
    jpa:
        hibernate:

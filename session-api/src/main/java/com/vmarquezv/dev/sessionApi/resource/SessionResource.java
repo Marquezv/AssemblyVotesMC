@@ -99,9 +99,6 @@ public class SessionResource {
 				.linkTo(WebMvcLinkBuilder.methodOn(SessionResource.class)
 						.findAll()).withRel(IanaLinkRelations.COLLECTION));
 		
-		res.getSurveyResponse().add(WebMvcLinkBuilder
-				.linkTo(WebMvcLinkBuilder.methodOn(SurveyResource.class)
-						.findById(res.getSurvey_id())).withRel("surveys"));
 		return res;
 	}
 	

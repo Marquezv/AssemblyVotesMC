@@ -34,14 +34,13 @@ public class AllowedUserSession {
 	@JoinColumn(name = "SESSION_ID")
     private Session session;
 	
-	@ManyToOne
 	@JoinColumn(name = "USER_ID")
-	private User user;
+	private Long user_id;
 	
 	public AllowedUserSessionResponseDTO toResponse() {
 		AllowedUserSessionResponseDTO allowedUserSessionRes = new AllowedUserSessionResponseDTO()
 				.setSession_id(this.session.getId())
-				.setUser_id(this.user.getId());
+				.setUser_id(this.user_id);
 		
 		return allowedUserSessionRes;
 	}

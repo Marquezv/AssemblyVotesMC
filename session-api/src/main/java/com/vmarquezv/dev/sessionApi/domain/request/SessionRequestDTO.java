@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vmarquezv.dev.sessionApi.commons.status.AccessStatus;
 import com.vmarquezv.dev.sessionApi.commons.status.SessionStatus;
 import com.vmarquezv.dev.sessionApi.domain.entity.Session;
-import com.vmarquezv.dev.sessionApi.domain.entity.Survey;
-import com.vmarquezv.dev.sessionApi.domain.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,11 +21,7 @@ public class SessionRequestDTO {
 	
 	private Long session_id;
 	
-	private Survey survey;
-	
 	private Long survey_id;
-	
-	private User user;
 	
 	private Long user_id;
 	
@@ -50,12 +44,10 @@ public class SessionRequestDTO {
 	
 	private SessionStatus session_status;
 	
-	private List<User> allowed_users;
+	private List<Long> allowed_users;
 	
 	public Session build() {
 		Session session = new Session()
-				.setSurvey(this.survey)
-				.setUser(this.user)
 				.setStarted_on(this.started_on)
 				.setClosed_on(this.closed_on)
 				.setCreated_on(this.created_on)

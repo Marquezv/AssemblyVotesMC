@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.vmarquezv.dev.sessionApi.commons.status.AccessStatus;
 import com.vmarquezv.dev.sessionApi.domain.entity.AllowedUserSession;
 import com.vmarquezv.dev.sessionApi.domain.entity.Session;
-import com.vmarquezv.dev.sessionApi.domain.entity.User;
 import com.vmarquezv.dev.sessionApi.domain.response.AllowedUserSessionResponseDTO;
 import com.vmarquezv.dev.sessionApi.exceptions.DataIntegratyViolationException;
 import com.vmarquezv.dev.sessionApi.exceptions.ObjectNotFoundException;
@@ -33,10 +32,10 @@ public class AllowedUserSessionService {
 						() -> new ObjectNotFoundException("SESSION_ID || USER_ID - NOT_FOUND")).toResponse();
 	}
 	
-	public void addUserSession(Session session, User user) {
+	public void addUserSession(Session session, Long user_id) {
 		AllowedUserSession allowedUserSession = new AllowedUserSession()
 				.setSession(session)
-				.setUser(user);
+				.setUser_id(user_id);
 		repository.save(allowedUserSession);
 	}
 
