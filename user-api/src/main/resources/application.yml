@@ -1,25 +1,34 @@
-spring:
+server:
+   port: 8080
 
+spring:
    application:
        name: user-api
        
    datasource:
        driver-class-name: org.postgresql.Driver
-       url: jdbc:postgresql://localhost:5432/user
-       username: user
-       password: pass
+       url: jdbc:postgresql://172.22.0.2:5432/assembly-db
+       username: adm
+       password: 123
+       initialization-mode: always
+       initialize: true
+       continue-on-error: true
+       platform: postgresql
+       
   # JPA properties
    jpa:
        hibernate:
-       ddl-auto: update 
+          ddl-auto: update 
+          format_sql: true
        show-sql: true
-       database: postgresql
-       database-platform: org.hibernate.dialect.PostgreSQLDialect
+       properties:
+          hibernate:
+             dialect: org.hibernate.dialect.PostgreSQL9Dialect
        open-in-view: false
        generate-ddl: true   
    
    rabbitmq:
-      host: localhost
+      host: 172.22.0.3
       port: 5672
       username: rabbitmq
       password: rabbitmq

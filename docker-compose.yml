@@ -23,7 +23,15 @@ services:
       environment:
          - RABBITMQ_DEFAULT_USER=rabbitmq
          - RABBITMQ_DEFAULT_PASS=rabbitmq
-         
+
+   user-api:
+        build: './user-api'
+        container_name: user-api
+        ports:
+           - 8080:8080
+        depends_on:
+            - assembly-db
+
    session-api:
         build: './session-api'
         container_name: session-api
@@ -31,5 +39,5 @@ services:
            - 8081:8080
         depends_on:
             - assembly-db
-
+            - user-api
   
