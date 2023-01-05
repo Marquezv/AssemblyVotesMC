@@ -1,8 +1,9 @@
-FROM openjdk
+FROM maven:3.8.3-openjdk-17
 
-WORKDIR /app
+RUN mkdir -p /app
 
-COPY target/session-api-0.0.1-SNAPSHOT.jar /app/session-api.jar
+COPY target/session-api-0.0.2-SNAPSHOT.jar /app/session-api.jar
 
-ENTRYPOINT ["java", "-jar", "session-api.jar"]
-EXPOSE 8081
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/session-api.jar"]
