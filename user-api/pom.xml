@@ -11,7 +11,7 @@
 	<groupId>com.vmarquezv.dev</groupId>
 	<artifactId>user-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>userService</name>
+	<name>user-api</name>
 	<description>UserService API for AssemblyVotesAPI</description>
 	<properties>
 		<java.version>17</java.version>

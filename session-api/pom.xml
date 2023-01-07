@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.vmarquezv.dev</groupId>
 	<artifactId>session-api</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>session-api</name>
 	<description>SessionService API for AssemblyVotesAPI</description>
 	<properties>
