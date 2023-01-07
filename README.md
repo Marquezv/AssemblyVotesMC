@@ -27,7 +27,7 @@ In this version the API works in two instances with shared database
 # Project 🚧
 ## This project has the MVC pattern, having controllers, services and repositories following the demand of the object
 
- 
+    ├── getway                    # Getway - Manage UserAPI and SessionAPI
     ├── user-api                  # UserApi - User and Survey functions
     ├── session-api               # SessionApi - Session, Votes and AllowedUser functions
     └── docker-compose.yml        # Docker - config and start RabbitMQ and PostgreSQL
