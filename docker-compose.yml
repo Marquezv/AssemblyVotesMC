@@ -22,6 +22,31 @@ services:
       - 'WAIT_HOSTS=assembly-db:5432'
     depends_on:
       - assembly-db
+    
+  keycloak:
+    image: jboss/keycloak:4.8.3.Final
+    restart: on-failure
+    command:
+      - "-b"
+      - "0.0.0.0"
+      - "-Dkeycloak.migration.action=import"
+      - "-Dkeycloak.migration.provider=dir"
+      - "-Dkeycloak.migration.dir=/config/"
+      - "-Dkeycloak.migration.strategy=IGNORE_EXISTING"
+    environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: assembly-db
+        DB_USER: adm
+        DB_SCHEMA: public
+        DB_PASSWORD: 123
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+    ports:
+      - '8085:8080'
+    depends_on:
+      - assembly-db
+    
   user-api:
     build: ./user-api
     container_name: user-api
@@ -32,6 +57,7 @@ services:
     depends_on:
       - assembly-db
       - rabbitmq
+
   session-api:
     build: ./session-api
     container_name: session-api
@@ -42,11 +68,11 @@ services:
     depends_on:
       - assembly-db
       - user-api
-  getway:
-    build: ./getway
-    container_name: getway
+  gateway:
+    build: ./gateway
+    container_name: gateway
     ports:
-      - '8080:8080'
+      - '8080:8084'
     environment:
       WAIT_HOSTS: 'assembly-db:5432, rabbitmq:5672, user-api:8081, session-api:8082'
     depends_on:
