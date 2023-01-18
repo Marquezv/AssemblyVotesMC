@@ -1,8 +1,20 @@
 server:
-   port: 8084
+   port: 9090
+
 
 spring:
-   application:
+    application:
       name: gateway
-   
-
+    security:
+      oauth2:
+         client:
+            provider:
+               my-keycloak-provider:
+                  issuer-uri: http://localhost:8081/auth/realms/AssemblyVotes
+            registration:
+               keycloak-assembly-gateway:
+                  provider: my-keycloak-provider
+                  client-id: assembly-gateway
+                  client-secret: e5a9d28b-2b18-461c-b375-9484aa6cbc81
+                  authorization-grant-type: authorization_code
+                  redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'

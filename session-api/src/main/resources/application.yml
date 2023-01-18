@@ -33,3 +33,17 @@ spring:
       port: 5672
       username: rabbitmq
       password: rabbitmq
+      
+   security:
+      oauth2:
+         client:
+            provider:
+               my-keycloak-provider:
+                  issuer-uri: http://localhost:8081/auth/realms/AssemblyVotes
+            registration:
+               keycloak-assembly-sessions:
+                  provider: my-keycloak-provider
+                  client-id: assembly-sessions
+                  client-secret: 58f07a10-41b7-4a45-8e03-a5b4b7640ebb
+                  authorization-grant-type: authorization_code
+                  redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'

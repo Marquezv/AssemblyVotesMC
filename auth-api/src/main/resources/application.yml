@@ -27,7 +27,3 @@ spring:
        open-in-view: false
        generate-ddl: true   
        
-security:
-   oauth2:
-      client:
-         scope: password
